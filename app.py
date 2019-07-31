@@ -30,13 +30,17 @@ def signup():
     return home()
 
 
-@app.route('/logged-in')
+@app.route('/logged-in', methods=['GET', 'POST'])
 def logged_in():
+    if request.method =='GET':
+        return "does not support this method"
+    
     return render_template('logged.html')
 
 
 @app.route('/logout')
 def logout():
+    login_session['logged_in']= False
     return home()
 
  
